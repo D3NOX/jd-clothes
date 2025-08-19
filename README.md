@@ -1,2 +1,2 @@
-# JD-Clothes
-JD Clothes Website
+# Emergency Kiel
+Offical Emergency Kiel Update Log website
