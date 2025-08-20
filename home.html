@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Emergency Kiel</title>
-  
-  <!-- Open Graph / Discord Preview -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://deinewebsite.de">
-  <meta property="og:title" content="Emergency Kiel">
-  <meta property="og:description" content="Alles Wichtige rund um Notfälle in Kiel – schnelle Infos und Kontakte.">
-  <meta property="og:image" content="https://deinewebsite.de/images/og-discord-image.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-</head>
-<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Emergency Kiel</title>
+
+<!-- Fonts & Icons -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Open Graph / Discord Preview -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://deinewebsite.de">
+<meta property="og:title" content="Emergency Kiel">
+<meta property="og:description" content="Alles Wichtige rund um Notfälle in Kiel – schnelle Infos und Kontakte.">
+<meta property="og:image" content="https://media.discordapp.net/attachments/1384780454825299968/1384938357569884210/image.png?ex=68a74e5b&is=68a5fcdb&hm=54b730d04ce5124da3f46e874d242c1ab0ede74cca1c171100137a99656bddc2&=&format=webp&quality=lossless">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
 <style>
 body {
     margin: 0;
@@ -243,8 +241,7 @@ h2 {
             <div class="avatar" style="--bg-color:#c50000;">v2.4.5</div>
             <div class="news-content">
                 <p class="news-title">Alien Live Event & Update</p>
-                <p class="news-text">A global countdown is now running and will hit zero on Saturday, 16.08.2025 at 18:00 (CEST).
-                Only then will the brand-new 7-day live event begin.</p>
+                <p class="news-text">A global countdown is now running and will hit zero on Saturday, 16.08.2025 at 18:00 (CEST). Only then will the brand-new 7-day live event begin.</p>
             </div>
         </div>
         <div class="news-item">
@@ -290,43 +287,26 @@ h2 {
     <div class="team-container">
         <div class="team-member">
             <div class="avatar-placeholder" style="--bg-color:#a30000;">C</div>
-            <p class="team-name">Cen</p>
+            <p class="team-name">Chad</p>
         </div>
         <div class="team-member">
-            <div class="avatar-placeholder" style="--bg-color:#b96c00;">D</div>
-            <p class="team-name">Denis</p>
-        </div>
-        <div class="team-member">
-            <div class="avatar-placeholder" style="--bg-color:#007896;">J</div>
-            <p class="team-name">Jannik</p>
-        </div>
-        <div class="team-member">
-            <div class="avatar-placeholder" style="--bg-color:#008f13;">W</div>
-            <p class="team-name">Welox</p>
-        </div>
-        <div class="team-member">
-            <div class="avatar-placeholder" style="--bg-color:#003391;">J</div>
-            <p class="team-name">Jannis</p>
-        </div>
-        <div class="team-member">
-            <div class="avatar-placeholder" style="--bg-color:#659b00;">J</div>
-            <p class="team-name">Jay</p>
+            <div class="avatar-placeholder" style="--bg-color:#c59100;">V</div>
+            <p class="team-name">Viktor</p>
         </div>
     </div>
 </section>
 
 <script>
-function openTab(tabId) {
-    // alle Sektionen verstecken
-    document.querySelectorAll("section").forEach(sec => sec.style.display = "none");
-    // alle Buttons zurücksetzen
-    document.querySelectorAll(".tab-button").forEach(btn => btn.classList.remove("active"));
-    // gewählte Sektion und Button aktivieren
-    document.getElementById(tabId).style.display = "block";
-    event.target.classList.add("active");
+// Tabs functionality
+function openTab(tabName) {
+    const tabs = ['news', 'games', 'team'];
+    tabs.forEach(tab => {
+        document.getElementById(tab).style.display = (tab === tabName) ? 'block' : 'none';
+    });
+    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+    event.currentTarget.classList.add('active');
 }
 </script>
 
 </body>
 </html>
-
