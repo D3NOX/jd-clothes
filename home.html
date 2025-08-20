@@ -32,36 +32,39 @@ body {
     object-fit: contain;
 }
 
-/* ===== Header / Overhead ===== */
-header {
-    text-align: center;
-    padding: 60px 20px 40px 20px;
+/* ===== Tabs ===== */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    gap: 10px;
 }
-
-header h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
-    color: #0B95F8;
+.tab-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #0B95F8;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
 }
-
-header p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
-}
+.tab-button:hover { background: #0B95F8; }
+.tab-button.active { background: #0963a3; }
 
 /* ===== Sektionen ===== */
 section {
     max-width: 1000px;
-    margin: 60px auto;
+    margin: 40px auto;
     padding: 0 20px;
 }
-
 h2 {
     color: #0B95F8;
     display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 30px;
+    justify-content: center;
 }
 
 /* ===== News ===== */
@@ -74,6 +77,12 @@ h2 {
     background: #1a1a1a;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+    transition: 0.2s;
+}
+
+.news-item:hover {
+    background: #0B95F8;
+    transform: scale(1.02);
 }
 
 .avatar {
@@ -82,48 +91,35 @@ h2 {
     border-radius: 12px;
     background-color: var(--bg-color, #0B95F8);
     flex-shrink: 0;
-
-    /* Text styling */
     color: white;
     font-weight: bold;
     font-size: 20px;
-
-    /* Zentrieren */
     display: flex;
     align-items: center;
     justify-content: center;
-
-    /* Falls Text zu lang wird */
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-
-
 .news-content {
     flex-grow: 1;
 }
-
 .news-title {
     font-weight: bold;
     margin: 0 0 5px 0;
     color: #ffffff;
 }
-
 .news-text {
     margin: 0;
     color: #cecece;
 }
-
-/* Scroll-Container für News */
 .news-scroll {
-    max-height: 300px;   /* Höhe anpassen */
-    overflow-y: auto;    /* nur intern scrollen */
-    padding-right: 10px; /* Platz für Scrollbar */
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 20px;
+    padding-left: 20px;
 }
-
-/* Optional: eigene Scrollbar */
 .news-scroll::-webkit-scrollbar {
     width: 8px;
 }
@@ -139,110 +135,27 @@ h2 {
     background: #0963a3;
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 768px) {
-    .news-item { flex-direction: column; align-items: flex-start; }
-    .avatar { width: 50px; height: 50px; margin-bottom: 10px; }
-}
-</style>
-</head>
-<body>
-
-<!-- Banner Icon -->
-<div class="banner">
-    <img src="https://media.discordapp.net/attachments/1384780454825299968/1384938357569884210/image.png?ex=68a74e5b&is=68a5fcdb&hm=54b730d04ce5124da3f46e874d242c1ab0ede74cca1c171100137a99656bddc2&=&format=webp&quality=lossless" alt="Loading Image">
-</div>
-
-<section id="news">
-    <h2><i class="fas fa-newspaper"></i>News & Updates</h2>
-
-    <div class="news-scroll">
-        <div class="news-item">
-            <div class="avatar" style="--bg-color:#c50000;">v2.4.5</div>
-            <div class="news-content">
-                <p class="news-title">Alien Live Event & Update</p>
-                <p class="news-text">A global countdown is now running and will hit zero on Saturday, 16.08.2025 at 18:00 (CEST).
-                Only then will the brand-new 7-day live event begin.</p>
-            </div>
-        </div>
-
-        <div class="news-item">
-            <div class="avatar" style="--bg-color:#c59100;">v2.4.0</div>
-            <div class="news-content">
-                <p class="news-title">Summer Splash Update</p>
-                <p class="news-text">Summer has arrived – bringing tons of new items, a brand-new beach area, and fresh effects to explore!</p>
-            </div>
-        </div>
-
-        <div class="news-item">
-            <div class="avatar" style="--bg-color:#c50000;">v2.3.5</div>
-            <div class="news-content">
-                <p class="news-title">Map & Slap Update</p>
-                <p class="news-text">Update for the ending of Map & Slap Update and for new Features.</p>
-            </div>
-        </div>
-
-        <div class="news-item">
-            <div class="avatar" style="--bg-color:#c59100;">v2.3.0</div>
-            <div class="news-content">
-                <p class="news-title">Map & Slap Update</p>
-                <p class="news-text">Map & Slap Update - is an limited time Slap Event.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="team">
-    <h2><i class="fas fa-users"></i>Unser Dev Team</h2>
-    <div class="team-container">
-        <!-- Teammitglied -->
-        <div class="team-member">
-            <div class="avatar-placeholder" style="--bg-color:#f80b0b;">C</div>
-            <p class="team-name">Cen</p>
-        </div>
-
-        <div class="team-member">
-            <div class="avatar-placeholder" style="--bg-color:#F28C00;">D</div>
-            <p class="team-name">Denis</p>
-        </div>
-        
-        <div class="team-member">
-            <div class="avatar-placeholder" style="--bg-color:#00ccff;">J</div>
-            <p class="team-name">Jannik</p>
-        </div>
-
-        <div class="team-member">
-            <div class="avatar-placeholder" style="--bg-color:#00a316;">W</div>
-            <p class="team-name">Welox</p>
-        </div>
-
-        <div class="team-member">
-            <div class="avatar-placeholder" style="--bg-color:#0059ff;">J</div>
-            <p class="team-name">Jannis</p>
-        </div>
-
-        <div class="team-member">
-            <div class="avatar-placeholder" style="--bg-color:#a6ff00;">J</div>
-            <p class="team-name">Jay</p>
-        </div>
-    </div>
-</section>
-
-<style>
+/* ===== Team ===== */
 .team-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    justify-content: center;
 }
-
 .team-member {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #1a1a1a; /* dunkelgrauer Hintergrund */
+    background: #1a1a1a;
     padding: 15px;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+    transition: 0.2s;
+}
+
+.team-member:hover {
+    background: #0B95F8;
+    transform: scale(1.02);
 }
 
 .avatar-placeholder {
@@ -259,14 +172,146 @@ h2 {
     margin-bottom: 10px;
     user-select: none;
 }
-
 .team-name {
     color: white;
     font-weight: bold;
 }
+
+/* ===== Games ===== */
+.game-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.game-card {
+    flex: 1 1 200px;
+    padding: 15px;
+    background: #1a1a1a;
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+    transition: 0.2s;
+}
+.game-card:hover {
+    background: #0B95F8;
+    transform: scale(1.02);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .news-item { flex-direction: column; align-items: flex-start; }
+    .avatar { width: 50px; height: 50px; margin-bottom: 10px; }
+}
 </style>
+</head>
+<body>
+
+<!-- Banner Icon -->
+<div class="banner">
+    <img src="https://media.discordapp.net/attachments/1384780454825299968/1384938357569884210/image.png?ex=68a74e5b&is=68a5fcdb&hm=54b730d04ce5124da3f46e874d242c1ab0ede74cca1c171100137a99656bddc2&=&format=webp&quality=lossless" alt="Banner Icon">
+</div>
+
+<!-- Tabs -->
+<div class="tabs">
+    <button class="tab-button active" onclick="openTab('news')"><i class="fas fa-newspaper"></i> News</button>
+    <button class="tab-button" onclick="openTab('games')"><i class="fas fa-gamepad"></i> Games</button>
+    <button class="tab-button" onclick="openTab('team')"><i class="fas fa-users"></i> Team</button>
+</div>
+
+<!-- News -->
+<section id="news">
+    <h2><i class="fas fa-newspaper"></i>News & Updates</h2>
+    <div class="news-scroll">
+        <div class="news-item">
+            <div class="avatar" style="--bg-color:#c50000;">v2.4.5</div>
+            <div class="news-content">
+                <p class="news-title">Alien Live Event & Update</p>
+                <p class="news-text">A global countdown is now running and will hit zero on Saturday, 16.08.2025 at 18:00 (CEST).
+                Only then will the brand-new 7-day live event begin.</p>
+            </div>
+        </div>
+        <div class="news-item">
+            <div class="avatar" style="--bg-color:#c59100;">v2.4.0</div>
+            <div class="news-content">
+                <p class="news-title">Summer Splash Update</p>
+                <p class="news-text">Summer has arrived – bringing tons of new items, a brand-new beach area, and fresh effects to explore!</p>
+            </div>
+        </div>
+        <div class="news-item">
+            <div class="avatar" style="--bg-color:#c50000;">v2.3.5</div>
+            <div class="news-content">
+                <p class="news-title">Map & Slap Update</p>
+                <p class="news-text">Update for the ending of Map & Slap Update and for new Features.</p>
+            </div>
+        </div>
+        <div class="news-item">
+            <div class="avatar" style="--bg-color:#c59100;">v2.3.0</div>
+            <div class="news-content">
+                <p class="news-title">Map & Slap Update</p>
+                <p class="news-text">Map & Slap Update - is an limited time Slap Event.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Games -->
+<section id="games" style="display:none;">
+    <h2><i class="fas fa-gamepad"></i>Game Links</h2>
+    <div class="game-links">
+        <a href="https://www.roblox.com/de/games/139102394386024" target="_blank" class="game-card">
+            <i class="fas fa-link"></i> Emergency Kiel Hangout
+        </a>
+        <a href="https://discord.gg/ZPM6dqM3Pm" target="_blank" class="game-card">
+            <i class="fas fa-link"></i> Emergency Kiel (View our Discord for Information)
+        </a>
+    </div>
+</section>
+
+<!-- Team -->
+<section id="team" style="display:none;">
+    <h2><i class="fas fa-users"></i>Unser Dev Team</h2>
+    <div class="team-container">
+        <div class="team-member">
+            <div class="avatar-placeholder" style="--bg-color:#a30000;">C</div>
+            <p class="team-name">Cen</p>
+        </div>
+        <div class="team-member">
+            <div class="avatar-placeholder" style="--bg-color:#b96c00;">D</div>
+            <p class="team-name">Denis</p>
+        </div>
+        <div class="team-member">
+            <div class="avatar-placeholder" style="--bg-color:#007896;">J</div>
+            <p class="team-name">Jannik</p>
+        </div>
+        <div class="team-member">
+            <div class="avatar-placeholder" style="--bg-color:#008f13;">W</div>
+            <p class="team-name">Welox</p>
+        </div>
+        <div class="team-member">
+            <div class="avatar-placeholder" style="--bg-color:#003391;">J</div>
+            <p class="team-name">Jannis</p>
+        </div>
+        <div class="team-member">
+            <div class="avatar-placeholder" style="--bg-color:#659b00;">J</div>
+            <p class="team-name">Jay</p>
+        </div>
+    </div>
+</section>
+
+<script>
+function openTab(tabId) {
+    // alle Sektionen verstecken
+    document.querySelectorAll("section").forEach(sec => sec.style.display = "none");
+    // alle Buttons zurücksetzen
+    document.querySelectorAll(".tab-button").forEach(btn => btn.classList.remove("active"));
+    // gewählte Sektion und Button aktivieren
+    document.getElementById(tabId).style.display = "block";
+    event.target.classList.add("active");
+}
+</script>
+
 </body>
 </html>
-
-
-
