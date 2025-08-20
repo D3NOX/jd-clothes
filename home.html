@@ -236,50 +236,7 @@ h2 {
 <!-- News -->
 <section id="news">
     <h2><i class="fas fa-newspaper"></i>News & Updates</h2>
-    <div class="news-scroll">
-        <div class="news-item">
-            <div class="avatar" style="--bg-color:#c50000;">Bug Fix</div>
-            <div class="news-content">
-                <p class="news-title">Sprint System Update (Mobile)</p>
-                <p class="news-text">New mobile support, you just need to press once and it will automatically sprint and then press it again and you can run normally.</p>
-            </div>
-        </div>
-        <div class="news-item">
-            <div class="avatar" style="--bg-color:#c50000;">v2.4.6</div>
-            <div class="news-content">
-                <p class="news-title">Sprint System Update</p>
-                <p class="news-text">We have revised the entire animation sprint system so that everything now runs smoother and better, etc.</p>
-            </div>
-        </div>
-        <div class="news-item">
-            <div class="avatar" style="--bg-color:#c50000;">v2.4.5</div>
-            <div class="news-content">
-                <p class="news-title">Alien Live Event & Update</p>
-                <p class="news-text">A global countdown is now running and will hit zero on Saturday, 16.08.2025 at 18:00 (CEST). Only then will the brand-new 7-day live event begin.</p>
-            </div>
-        </div>
-        <div class="news-item">
-            <div class="avatar" style="--bg-color:#c59100;">v2.4.0</div>
-            <div class="news-content">
-                <p class="news-title">Summer Splash Update</p>
-                <p class="news-text">Summer has arrived – bringing tons of new items, a brand-new beach area, and fresh effects to explore!</p>
-            </div>
-        </div>
-        <div class="news-item">
-            <div class="avatar" style="--bg-color:#c50000;">v2.3.5</div>
-            <div class="news-content">
-                <p class="news-title">Map & Slap Update</p>
-                <p class="news-text">Update for the ending of Map & Slap Update and for new Features.</p>
-            </div>
-        </div>
-        <div class="news-item">
-            <div class="avatar" style="--bg-color:#c59100;">v2.3.0</div>
-            <div class="news-content">
-                <p class="news-title">Map & Slap Update</p>
-                <p class="news-text">Map & Slap Update - is an limited time Slap Event.</p>
-            </div>
-        </div>
-    </div>
+    <div class="news-scroll" id="news-container"></div>
 </section>
 
 <!-- Games -->
@@ -311,7 +268,7 @@ h2 {
             <div class="avatar-placeholder" style="--bg-color:#0F3460;">J</div>
             <p class="team-name">Jannik</p>
         </div>
-            <div class="team-member">
+        <div class="team-member">
             <div class="avatar-placeholder" style="--bg-color:#2C2C54;">W</div>
             <p class="team-name">Welox</p>
         </div>
@@ -336,11 +293,35 @@ function openTab(tabName) {
     document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
     event.currentTarget.classList.add('active');
 }
+
+// News laden
+async function loadNews() {
+    try {
+        const data = JSON.parse(localStorage.getItem("emergencyNews") || "[]");
+        const container = document.getElementById("news-container");
+        container.innerHTML = "";
+        data.forEach(item => {
+            const div = document.createElement("div");
+            div.className = "news-item";
+            div.innerHTML = `
+              <div class="avatar" style="background:${item.color};">${item.version}</div>
+              <div class="news-content">
+                <p class="news-title">${item.title}</p>
+                <p class="news-text">${item.text}</p>
+              </div>
+            `;
+            container.appendChild(div);
+        });
+    } catch (e) {
+        console.error("Fehler beim Laden der News:", e);
+    }
+}
+
+
+// beim Laden + alle 10 Sekunden refresh
+loadNews();
+setInterval(loadNews, 10000);
 </script>
 
 </body>
 </html>
-
-
-
-

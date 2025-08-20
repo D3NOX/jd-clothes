@@ -1,0 +1,38 @@
+[
+  {
+    "version": "Bug Fix",
+    "color": "#c50000",
+    "title": "Sprint System Update (Mobile)",
+    "text": "New mobile support, you just need to press once and it will automatically sprint and then press it again and you can run normally."
+  },
+  {
+    "version": "v2.4.6",
+    "color": "#c50000",
+    "title": "Sprint System Update",
+    "text": "We have revised the entire animation sprint system so that everything now runs smoother and better, etc."
+  },
+  {
+    "version": "v2.4.5",
+    "color": "#c50000",
+    "title": "Alien Live Event & Update",
+    "text": "A global countdown is now running and will hit zero on Saturday, 16.08.2025 at 18:00 (CEST). Only then will the brand-new 7-day live event begin."
+  },
+  {
+    "version": "v2.4.0",
+    "color": "#c59100",
+    "title": "Summer Splash Update",
+    "text": "Summer has arrived – bringing tons of new items, a brand-new beach area, and fresh effects to explore!"
+  },
+  {
+    "version": "v2.3.5",
+    "color": "#c50000",
+    "title": "Map & Slap Update",
+    "text": "Update for the ending of Map & Slap Update and for new Features."
+  },
+  {
+    "version": "v2.3.0",
+    "color": "#c59100",
+    "title": "Map & Slap Update",
+    "text": "Map & Slap Update - is an limited time Slap Event."
+  }
+]

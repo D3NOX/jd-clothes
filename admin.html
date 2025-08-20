@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emergency Kiel - Update Panel</title>
+
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #f2f2f2;
+    color: #333;
+    scroll-behavior: smooth;
+}
+
+header {
+    background: #0963a3;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* Form */
+#newsForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+#newsForm input, #newsForm textarea, #newsForm select, #newsForm button {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+#newsForm button {
+    background: #0B95F8;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+#newsForm button:hover { background: #0963a3; }
+
+/* News */
+.news-list { display: flex; flex-direction: column; gap: 15px; }
+.news-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 15px;
+    border-radius: 12px;
+    background: #1a1a1a;
+    color: white;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+.news-item.visible { opacity: 1; transform: translateY(0); }
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    margin-right: 15px;
+    flex-shrink: 0;
+    font-size: 18px;
+}
+.news-content { flex-grow: 1; }
+.news-title { font-weight: bold; margin: 0 0 5px 0; font-size: 18px; }
+.news-text { margin: 0; color: #cecece; }
+.delete {
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ff4d4d;
+    transition: 0.2s;
+}
+.delete:hover { color: #ff0000; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .news-item { flex-direction: column; align-items: flex-start; }
+    .avatar { width: 50px; height: 50px; margin-bottom: 10px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Emergency Kiel - Update Panel</h1>
+</header>
+
+<main>
+<!-- Passwort-Overlay -->
+<div id="passwordOverlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#000a;color:white;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:1000;">
+    <h2>Bitte Passwort eingeben</h2>
+    <input type="password" id="passwordInput" placeholder="Passwort" style="padding:10px;border-radius:8px;border:none;font-size:16px;margin-top:10px;">
+    <button id="passwordBtn" style="margin-top:10px;padding:10px 20px;border:none;border-radius:8px;background:#0B95F8;color:white;font-weight:bold;cursor:pointer;">Bestätigen</button>
+    <p id="passwordError" style="color:red;margin-top:10px;display:none;">Falsches Passwort!</p>
+</div>
+
+<form id="newsForm" style="display:none;">
+    <input type="text" id="title" placeholder="Titel" required>
+    <textarea id="text" placeholder="Text" rows="3" required></textarea>
+    <input type="text" id="version" placeholder="Version" required>
+    <select id="color" required>
+        <option value="#c50000">Rot</option>
+        <option value="#c59100">Gelb</option>
+        <option value="#008000">Grün</option>
+    </select>
+    <button type="submit"><i class="fas fa-plus"></i> News erstellen</button>
+</form>
+
+<section id="postsContainer" class="news-list"></section>
+</main>
+
+<script>
+const STORAGE_KEY = "emergencyNews";
+const CORRECT_PASSWORD = "T9v#4rX!qLp7Zb2@"; // <- hier Passwort ändern
+
+const overlay = document.getElementById("passwordOverlay");
+const passwordInput = document.getElementById("passwordInput");
+const passwordBtn = document.getElementById("passwordBtn");
+const passwordError = document.getElementById("passwordError");
+const newsForm = document.getElementById("newsForm");
+
+passwordBtn.addEventListener("click", () => {
+    if(passwordInput.value === CORRECT_PASSWORD){
+        overlay.style.display = "none";
+        newsForm.style.display = "flex"; // Formular anzeigen
+        loadPosts(); // erst nach Passwort laden
+    } else {
+        passwordError.style.display = "block";
+        passwordInput.value = "";
+    }
+});
+
+// Lade alle Posts
+function loadPosts() {
+    const container = document.getElementById("postsContainer");
+    container.innerHTML = "";
+    const news = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+
+    news.forEach((item, index) => {
+        const div = document.createElement("div");
+        div.className = "news-item";
+        div.innerHTML = `
+            <div class="avatar" style="background:${item.color};">${item.version}</div>
+            <div class="news-content">
+                <p class="news-title">${item.title}</p>
+                <p class="news-text">${item.text}</p>
+            </div>
+            <div class="delete" onclick="deletePost(${index})"><i class="fas fa-trash"></i></div>
+        `;
+        container.appendChild(div);
+        setTimeout(() => div.classList.add("visible"), 100);
+    });
+}
+
+// Löschen
+function deletePost(index) {
+    const news = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    news.splice(index, 1);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(news));
+    loadPosts();
+}
+
+// Formular Submit
+newsForm.addEventListener("submit", e => {
+    e.preventDefault();
+    const news = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    const newPost = {
+        title: document.getElementById("title").value,
+        text: document.getElementById("text").value,
+        version: document.getElementById("version").value,
+        color: document.getElementById("color").value
+    };
+    news.unshift(newPost);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(news));
+    e.target.reset();
+    loadPosts();
+});
+</script>
+
+</body>
+</html>
