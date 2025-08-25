@@ -5,13 +5,13 @@
 <div>&nbsp;</div>
 
 <div align="center">
-  <img 
-    src="https://img.shields.io/badge/Status-Wartungsarbeiten-orange?style=flat&logo=lua&logoColor=white&labelColor=grey" 
-    alt="Status" 
-    style="border-radius: 20px;" />
+<img 
+  src="https://img.shields.io/badge/Status-Wartungsarbeiten-orange?style=flat&logo=wrench&logoColor=white&labelColor=grey" 
+  alt="Status: Wartungsarbeiten" 
+  style="border-radius:20px;" />
 
-  <img 
-    src="https://img.shields.io/badge/Made with lua by-dxnis.cutz-lightred?style=flat&logo=lua&logoColor=white&labelColor=grey" 
-    alt="Made with Lua" 
-    style="border-radius: 20px;"/>
+<img 
+  src="https://img.shields.io/badge/Made with - dxnis.cutz-lightred?style=flat&logo=lua&logoColor=white&labelColor=grey" 
+  alt="Made with Lua by dxnis.cutz" 
+  style="border-radius:20px;" />
 </div>
