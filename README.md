@@ -11,7 +11,7 @@
   style="border-radius:20px;" />
 
 <img 
-  src="https://img.shields.io/badge/Made with - dxnis.cutz-lightred?style=flat&logo=lua&logoColor=white&labelColor=grey" 
-  alt="Made with Lua by dxnis.cutz" 
+  src="https://img.shields.io/badge/made by:-dxnis.cutz-red?style=flat&logo=wrench&logoColor=white&labelColor=grey" 
+  alt="Made by: dxnis.cutz" 
   style="border-radius:20px;" />
 </div>
