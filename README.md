@@ -5,5 +5,5 @@
 <div>&nbsp;</div>
 
 <div align="center">
-<img src="https://img.shields.io/badge/Status-Offline-red?style=for-the-badge&logo=times&logoColor=white" alt="Status" />
+<img src="https://img.shields.io/badge/Status-Wartungsarbeiten-orange?style=flat&logo=tools&logoColor=white&labelColor=black" alt="Status" style="border-radius: 20px;" />
 </div>
